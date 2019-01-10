@@ -1,5 +1,6 @@
 ## Latest changes
 
+  * Upgraded Boost to 1.69.0
   * Added point transformation functionality for LibCarla and PythonAPI
   * Added support for Deepin in PythonAPI's setup.py
 
