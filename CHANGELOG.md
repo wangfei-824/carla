@@ -3,6 +3,12 @@
   * Added point transformation functionality for LibCarla and PythonAPI
   * Added "sensor_tick" attribute to sensors (cameras and lidars) to specify the capture rate in seconds
   * Added support for Deepin in PythonAPI's setup.py
+  * Added a few methods to manage an actor:
+    - set_velocity: for setting the linear velocity
+    - set_angular_velocity: for setting the angular velocity
+    - get_angular_velocity: for getting the angular velocity
+    - add_force: for applying a force (in world axis)
+    - add_impulse: for applying an impulse (in world axis)
 
 ## CARLA 0.9.2
 
