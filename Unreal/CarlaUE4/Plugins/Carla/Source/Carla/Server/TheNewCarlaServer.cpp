@@ -23,9 +23,11 @@
 #include <carla/rpc/EpisodeInfo.h>
 #include <carla/rpc/MapInfo.h>
 #include <carla/rpc/Server.h>
+#include <carla/rpc/String.h>
 #include <carla/rpc/Transform.h>
 #include <carla/rpc/VehicleControl.h>
 #include <carla/rpc/WeatherParameters.h>
+#include <carla/recorder/Recorder.h>
 #include <carla/streaming/Server.h>
 #include <compiler/enable-ue4-macros.h>
 
@@ -384,6 +386,19 @@ void FTheNewCarlaServer::FPimpl::BindActions()
       RespondErrorStr("unable to set autopilot: vehicle has an incompatible controller");
     }
     Controller->SetAutopilot(bEnabled);
+  });
+
+  Server.BindSync("start_recorder", [this]() -> std::string {
+    RequireEpisode();
+    return Episode->GetRecorder().start(
+      carla::rpc::FromFString(FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir())),
+      carla::rpc::FromFString(Episode->GetMapName())
+    );
+  });
+
+  Server.BindSync("stop_recorder", [this]() {
+    RequireEpisode();
+    Episode->GetRecorder().stop();
   });
 
   Server.BindSync("draw_debug_shape", [this](const cr::DebugShape &shape) {
