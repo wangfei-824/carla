@@ -3,6 +3,7 @@
   * Added point transformation functionality for LibCarla and PythonAPI
   * Added "sensor_tick" attribute to sensors (cameras and lidars) to specify the capture rate in seconds
   * Added support for Deepin in PythonAPI's setup.py
+  * Fix TCP accept error, too many open files while creating and destroying a lot of sensors
 
 ## CARLA 0.9.2
 
