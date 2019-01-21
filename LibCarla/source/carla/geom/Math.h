@@ -15,6 +15,8 @@
 namespace carla {
 namespace geom {
 
+  class Rotation;
+
   class Math {
   public:
 
@@ -32,6 +34,10 @@ namespace geom {
 
     static constexpr auto to_degrees(double rad) {
       return rad * (180.0 / pi());
+    }
+
+    static constexpr auto to_radians(double deg) {
+      return deg * (pi() / 180.0);
     }
 
     template <typename T>
@@ -95,6 +101,9 @@ namespace geom {
         const Vector3D &,
         double, // [radians]
         const Vector3D &);
+
+    /// Compute the unit vector pointing towards the X-axis of @a rotation.
+    static Vector3D GetForwardVector(const Rotation &rotation);
   };
 
 } // namespace geom

@@ -7,29 +7,26 @@
 #pragma once
 
 #include "carla/client/Actor.h"
-#include "carla/rpc/VehicleControl.h"
+#include "carla/rpc/WalkerControl.h"
 
 namespace carla {
 namespace client {
 
-  class Vehicle : public Actor {
+  class Walker : public Actor {
   public:
 
-    using Control = rpc::VehicleControl;
+    using Control = rpc::WalkerControl;
 
-    explicit Vehicle(ActorInitializer init) : Actor(std::move(init)) {}
+    explicit Walker(ActorInitializer init) : Actor(std::move(init)) {}
 
-    /// Switch on/off this vehicle's autopilot.
-    void SetAutopilot(bool enabled = true);
-
-    /// Apply @a control to this vehicle.
+    /// Apply @a control to this Walker.
     void ApplyControl(const Control &control);
 
-    /// Return the control last applied to this vehicle.
+    /// Return the control last applied to this Walker.
     ///
     /// @note This function does not call the simulator, it returns the Control
     /// received in the last tick.
-    Control GetControl() const;
+    Control GetWalkerControl() const;
 
   private:
 

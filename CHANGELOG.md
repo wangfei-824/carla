@@ -1,3 +1,12 @@
+## Latest changes
+
+  * Added point transformation functionality for LibCarla and PythonAPI
+  * Added "sensor_tick" attribute to sensors (cameras and lidars) to specify the capture rate in seconds
+  * Added "get_forward_vector()" to rotation and transform, retrieves the unit vector on the rotation's X-axis
+  * Added support for Deepin in PythonAPI's setup.py
+  * Added support for spawning and controlling walkers (pedestrians)
+  * Renamed vehicle.get_vehicle_control() to vehicle.get_control() to be consistent with walkers
+
 ## CARLA 0.9.2
 
   * Updated ROS bridge for CARLA 0.9.X (moved to its own repository)
