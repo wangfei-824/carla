@@ -297,9 +297,7 @@ class PointCloud(SensorData):
 
             return points[:, 0:3]
 
-        # Point clouds from carla are in a left-hand coordinate system; here we rotate
-        # point clouds into a right-hand coordinate system. So, the simulated data is 
-        # consistant with the KITTI dataset.
+        # Rotate the coordinate system to (x:forward, y:left, z:top).
         # If the coordinate sysem does not matter, just annotated these two lines below.
         self._array = point_transform(self._array, 0, 0, 0, numpy.pi, 0, 0)
         self._array = point_transform(self._array, 0, 0, 0, 0, 0, numpy.pi/2)
